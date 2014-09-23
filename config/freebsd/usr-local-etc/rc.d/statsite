@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# PROVIDE: statsite
+# REQUIRE: LOGIN
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# statsite_enable (bool):       Set to NO by default.
+#               Set it to YES to enable statsite.
+# statsite_flags (string):      Set to "" by default.
+#               Additional flags to statsite, see manual page.
+#
+
+. /etc/rc.subr
+
+name="statsite"
+rcvar=statsite_enable
+
+load_rc_config $name
+
+: ${statsite_enable="NO"}
+: ${statsite_config="/usr/local/etc/statsite.conf"}
+
+command="/usr/local/bin/${name}"
+command_args="-f ${statsite_config}"
+
+run_rc_command "$1"

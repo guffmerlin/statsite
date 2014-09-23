@@ -32,5 +32,12 @@ rpms: sdist build
         --define "_sourcedir  %{_topdir}" \
         -ba $(RPMBUILDROOT)/statsite.spec
 
-.PHONY: build test statsite_test
+# There was no existing install target, so freebsd install target it is!
+install: build
+	cp statsite /usr/local/bin
+	mkdir -p /usr/share/statsite
+	cp -R sinks /usr/share/statsite
+	cp config/freebsd/usr-local-etc/statsite.conf.sample /usr/local/etc
+	cp config/freebsd/usr-local-etc/rc.d/statsite /usr/local/etc/rc.d
 
+.PHONY: build test statsite_test
