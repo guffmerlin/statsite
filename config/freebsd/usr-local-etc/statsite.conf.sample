@@ -1,0 +1,62 @@
+###
+### Default statsite configuration
+###
+
+## Main configuration block
+[statsite]
+# How often to flush to sink
+flush_interval=10
+# IP Address to bind on
+bind_address=0.0.0.0
+# TCP port to listen on
+tcp_port=8125
+# UDP port to listen on
+udp_port=8125
+# Logging level can be one of: DEBUG | INFO | WARN | ERROR | CRITICAL
+log_level=DEBUG
+# Upper bound on error for timer estimates as a percentage (0.01 is 1%)
+timer_eps=0.01
+# Upper bound on error for unique set estimates as a percentage
+set_eps=0.02
+# Parse stdin as an input stream
+parse_stdin=0
+# Daemonize or not? Default is not, but we want to
+daemonize=1
+# Location of the PID file if statsite is daemonized
+pid_file=/var/run/statside.pid
+# If set, count how many commands are received during flush interval and emit that count under the given name
+#   example: "datapoints" will emit "counter.datapoints" in addition to "counter"
+input_counter=datapoints
+# Prefix added to all messages
+global_prefix=
+# Whether or not to use type prefixes
+use_type_prefix=1
+# If type prefixes are used, the various type prefixes may be configured here
+kv_prefix=kv.
+gauges_prefix=gauges.
+counts_prefix=counts.
+sets_prefix=sets.
+timers_prefix=timers.
+# Stream to stream_cmd in binary form rather than ASCII
+binary_stream=0
+# If enabled, counter output is extended to include all the summary values, otherwise only the sum is emitted
+extended_counters=0
+# The executable to run on flush intervals
+stream_cmd=python /usr/local/share/statsite/sinks/varlog.py /var/log/statsite.log
+
+## Optional histogram blocks
+[histogram_api]
+# Key prefix to match on
+prefix=api
+# Minimum bound on histogram - smaller values go into separate bucket
+min=0
+# Maximum bound on histogram - larger values go into separate bucket
+max=100
+# Width of each bucket between the min and the max
+width=5
+
+[histogram_default]
+prefix=
+min=0
+max=200
+width=20
