@@ -8,10 +8,9 @@
 #
 # statsite_enable (bool):       Set to NO by default.
 #               Set it to YES to enable statsite.
-# statsite_flags (string):      Set to "" by default.
-#               Additional flags to statsite, see manual page.
+# statsite_config (string):     Set to "/usr/local/etc/statsite.conf" by default.
+#               Path to configuration file for statsite
 #
-
 . /etc/rc.subr
 
 name="statsite"

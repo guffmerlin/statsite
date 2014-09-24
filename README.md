@@ -81,7 +81,7 @@ Install
 -------
 
 Download and build from source. This requires `scons` to be available,
-available usually through a system package manager. Steps:
+usually through a system package manager or python's `pip`. Steps::
 
     $ git clone https://github.com/armon/statsite.git
     $ cd statsite
@@ -137,6 +137,10 @@ A full list of configuration options is below.
 
 Configuration Options
 ---------------------
+
+There is a fully specified [example configuration](config/freebsd/usr-local-etc/statsite.conf.sample) with all options and comments.
+
+Comments may be specified with ';' and '#' and lines starting with those characters are ignored.
 
 Each statsite configuration option is documented below. Statsite configuration
 options must exist in the `statsite` section of the INI file:
@@ -197,7 +201,7 @@ options must exist in the `statsite` section of the INI file:
 
 In addition to global configurations, statsite supports histograms
 as well. Histograms are configured one per section, and the INI
-section must start with the work `histogram`. These are the recognized
+section must start with the word `histogram`. These are the recognized
 options:
 
 * prefix : This is the key prefix to match on. The longest matching prefix
