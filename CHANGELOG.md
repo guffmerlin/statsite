@@ -1,3 +1,11 @@
+# 0.7.2 (Unreleased)
+* Added some documentation to README.md
+* Fixed some documentation in rc.d script
+
+# 0.7.1 (Unreleased)
+* Support for freebsd (lame install, sample config, rc.d script)
+* Support for graphite sink to file with varlog.py sink
+
 # 0.7.0 (Unreleased)
 
 * Support for IPv6. Thanks to @ealekseev [GH-57]
